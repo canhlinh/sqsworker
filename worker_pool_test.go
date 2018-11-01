@@ -29,7 +29,9 @@ func TestNew(t *testing.T) {
 	Convey("Should create new SqsWorkerPool success", t, func() {
 		sqstestqueue := getTestQueue()
 
-		session := session.Must(session.NewSession())
+		session, err := session.NewSession()
+		So(err, ShouldBeNil)
+
 		sqsClient := sqs.New(session, aws.NewConfig().WithRegion("us-east-1"))
 		defer DeleteSqsQueue(sqsClient, sqstestqueue)
 

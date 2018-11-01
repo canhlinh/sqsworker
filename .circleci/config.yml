@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/golang:1.11
     working_directory: ~/sqsworker
-    environment: # environment variables for the build itself
+    environment:
       TEST_RESULTS: /tmp/test-results # path to where test results will be saved
     steps:
       - checkout
